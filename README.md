@@ -19,7 +19,12 @@ Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. |
 POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, and the user object. |
+```
+POST Register
 
+POST Login
+
+```
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
@@ -27,13 +32,30 @@ GET | /api/workouts | N/A | N/A | Returns an object of all the workouts in the d
 GET | /api/workouts/:id | N/A | N/A | Returns a singular event object based on user_id. |
 POST | /api/workouts | workoutName, date, user_id | N/A | Allows users to post brand new workouts to the database. |
 DELETE | /api/:id/workouts | user_id | N/A | Allows users to delete ANY OF THEIR OWN events. |
+```
+GET Workouts
 
+GET Workouts by ID
+
+POST Workout
+
+DELETE Workout
+
+```
 ### Exercises
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 POST | /api/exercises | exerciseName, musclesName | completed | Allows users to post brand new exercises to specific workout routine in database. |
 DELETE | /api/exercises/:id | N/A | N/A | Allows users to delete their OWN events. |
 PUT | /api/exercises/:id | Title, Date, Time, Location | Description, Link, Image, approved | Allows users to edit their OWN events. |
+```
+POST Exercise
+
+DELETE Exercise
+
+PUT Exercise
+
+```
 
 ## Credits
 ### Project Manager
