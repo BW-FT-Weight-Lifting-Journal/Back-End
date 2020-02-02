@@ -8,6 +8,10 @@ exports.up = function(knex) {
 
     user.string('password').notNullable();
 
+    user.string('name').notNullable();
+
+    user.string('avatarURL');
+
   })
   
 };
