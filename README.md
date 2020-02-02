@@ -107,7 +107,7 @@ DELETE User Exercise inside User Exercise
 {
 
 }
-
+```
 ## Credits
 ### Project Manager
 Jackson Ogles: https://github.com/cjogles <br>
