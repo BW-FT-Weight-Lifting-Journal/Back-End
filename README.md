@@ -11,6 +11,7 @@
 
 ## <a name='overview'></a>Overview
 This database allows users to register, login, and view all of their workouts in the database. It also allows users to create, edit, and delete their OWN workouts.
+Users can also create, edit and delete exercises within workouts, and create edit and delete sets within exercises.
 
 ## API Endpoints
 
