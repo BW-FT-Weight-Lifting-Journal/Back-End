@@ -1,9 +1,7 @@
 exports.seed = function(knex) {
-  // deletes all existing entries
-  return knex('sets').truncate()
+  return knex('sets').truncate()                          // deletes all existing entries
     .then(function () {
-      // inserts seed data into local development sqlite3 database
-      return knex('sets').insert([
+      return knex('sets').insert([                        // inserts seed data into local development sqlite3 database
         {
           id:1,
           reps: 3,
