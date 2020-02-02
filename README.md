@@ -28,7 +28,7 @@ GET | /api/workouts/:id | N/A | N/A | Returns a singular event object based on u
 POST | /api/workouts | workoutName, date, user_id | N/A | Allows users to post brand new workouts to the database. |
 DELETE | /api/:id/workouts | user_id | N/A | Allows users to delete ANY OF THEIR OWN events. |
 
-### Exercises (non-admin)
+### Exercises
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 POST | /api/exercises | exerciseName, musclesName | completed | Allows users to post brand new exercises to specific workout routine in database. |
