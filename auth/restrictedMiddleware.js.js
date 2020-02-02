@@ -24,3 +24,7 @@ module.exports = (req, res, next) => {                                          
       .json({ message: "Please provide a token to view this content." });         //
   }
 };
+
+//                                                                                  SO LONG STORY SHORTER -> 
+//                                                                                  The auth middleware returns a decoded token upon success
+//                                                                                  and returns status code 400 or 401 and json message on error
