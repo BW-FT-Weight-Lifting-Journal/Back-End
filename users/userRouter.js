@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const Workout = require("../workout/workoutModel.js");
+const User = require("../users/userModel.js");
 
-// Get Workout Information
+// Get user Information
 router.get('/', (req, res) => {
-  Workout.find()
-    .then(workout => {
-      res.status(200).json(workout)
+  User.find()
+    .then(user => {
+      res.status(200).json(user)
     })
     .catch(error => {
       res.status.json({
@@ -15,18 +15,18 @@ router.get('/', (req, res) => {
 })
 
 router.get("/:id", (req, res) => {
-  Workout.getBy({ id: req.params.id })
+  User.getBy({ id: req.params.id })
     .then(user => {
       if (user) {
-        let isWorkoutBool;
-        if (user.isWorkout == 1) {
-          isWorkoutBool = true;
+        let isuserBool;
+        if (user.isuser == 1) {
+          isuserBool = true;
         } else {
-          isWorkoutBool = false;
+          isuserBool = false;
         }
-        res.status(200).json({ ...user, isWorkout: isWorkoutBool });
+        res.status(200).json({ ...user, isuser: isuserBool });
       } else {
-        res.status(404).json({ message: "No Workout with that ID!" });
+        res.status(404).json({ message: "No user with that ID!" });
       }
     })
     .catch(err => {
@@ -34,13 +34,13 @@ router.get("/:id", (req, res) => {
     });
 }); 
 
-// Update Workout Information
+// Update user Information
 router.put("/:id", checkID, (req, res) => {
 
   const changes = req.body;
   const id = req.params;
 
-  Workout.update(id, changes)
+  User.update(id, changes)
     .then(user => {
       res.status(200).json({ message: "Updated user", user });
     })
@@ -51,16 +51,16 @@ router.put("/:id", checkID, (req, res) => {
     });
 });
 
-// Delete Workout and all cooresponding Information
+// Delete user and all cooresponding Information
 router.delete("/:id", checkID, (req, res) => {
 
   const id = req.params;
 
-  Workout.deleteWorkout(id)
+  User.deleteuser(id)
     .then(user => {
       user
-        ? res.status(200).json({ message: "Deleted Workout" })
-        : res.status(404).json({ message: "Workout does not exist!" });
+        ? res.status(200).json({ message: "Deleted user" })
+        : res.status(404).json({ message: "user does not exist!" });
     })
     .catch(err => {
       console.log(err);
@@ -70,12 +70,12 @@ router.delete("/:id", checkID, (req, res) => {
 
 // Check ID middleware
 function checkID(req, res, next) {
-  Workout.getBy({ id: req.params.id })
+  User.getBy({ id: req.params.id })
     .then(user => {
       if (user) {
         next();
       } else {
-        res.status(404).json({ message: "No Workout with that ID!" });
+        res.status(404).json({ message: "No user with that ID!" });
       }
     })
     .catch(err => {

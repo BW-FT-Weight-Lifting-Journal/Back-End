@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secrets = require("../config/secrets.js");
-const Workout = require("../workout/workoutModel.js");
+const Workout = require("../users/userModel.js");
 
 // Register Validation Middleware
 const register = (req, res, next) => {

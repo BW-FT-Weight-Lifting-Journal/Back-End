@@ -1,25 +1,25 @@
 const db = require("../data/dbConfig.js");
 
-// ADD a Workout
-const insert = workout => {
-  return db("workouts").insert(workout, "id");
+// ADD a user
+const insert = user => {
+  return db("users").insert(user, "id");
 };
 
-// Helper function to find a Workout
+// Helper function to find a user
 const find = () => {
-  return db("workouts");
+  return db("users");
 };
 
-// Helper function to return a Workout where 'prop' exists
+// Helper function to return a user where 'prop' exists
 const getBy = prop => {
-  return db("workouts")
+  return db("users")
     .where(prop)
     .first();
 };
 
-// Edit a Workout
+// Edit a user
 const update = (id, changes) => {
-  return db("workouts")
+  return db("users")
     .where(id)
     .update(changes)
     .then(res => {
@@ -32,12 +32,12 @@ const update = (id, changes) => {
     });
 };
 
-// Delete a Workout
-const deleteWorkout = id => {
+// Delete a user
+const deleteuser = id => {
   return getBy(id).then(res => {
     console.log(res);
     if (res) {
-      return db("workouts")
+      return db("users")
         .where(id)
         .del();
     }
@@ -48,6 +48,6 @@ module.exports = {
   insert,
   getBy,
   update,
-  deleteWorkout,
+  deleteuser,
   find
 };
