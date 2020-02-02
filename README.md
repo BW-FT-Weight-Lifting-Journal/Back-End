@@ -20,6 +20,7 @@ Method | Endpoint | Body (required) | Body (optional) | Notes
 POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. |
 POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, and the user object. |
 ```
+***EXAMPLES***
 POST Register
 
 POST Login
@@ -33,6 +34,7 @@ GET | /api/workouts/:id | N/A | N/A | Returns a singular event object based on u
 POST | /api/workouts | workoutName, date, user_id | N/A | Allows users to post brand new workouts to the database. |
 DELETE | /api/:id/workouts | user_id | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
+***EXAMPLES***
 GET Workouts
 
 GET Workouts by ID
@@ -49,6 +51,7 @@ POST | /api/exercises | exerciseName, musclesName | completed | Allows users to 
 DELETE | /api/exercises/:id | N/A | N/A | Allows users to delete their OWN events. |
 PUT | /api/exercises/:id | Title, Date, Time, Location | Description, Link, Image, approved | Allows users to edit their OWN events. |
 ```
+***EXAMPLES***
 POST Exercise
 
 DELETE Exercise
