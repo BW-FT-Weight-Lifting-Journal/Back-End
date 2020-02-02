@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const Workout = require("../workout/workoutModel.js");
 
-// Get Workout Information
 router.get('/', (req, res) => {
   Workout.find()
     .then(workout => {
@@ -15,10 +14,10 @@ router.get('/', (req, res) => {
 })
 
 router.get("/:id", (req, res) => {
-  Workout.getBy({ id: req.params.id })
-    .then(user => {
-      if (user) {
-        res.status(200).json({ ...user });
+  Workout.findByID({ id: req.params.id })
+    .then(workout => {
+      if (workout) {
+        res.status(200).json({ ...workout });
       } else {
         res.status(404).json({ message: "No Workout with that ID!" });
       }
@@ -28,15 +27,14 @@ router.get("/:id", (req, res) => {
     });
 }); 
 
-// Update Workout Information
 router.put("/:id", checkID, (req, res) => {
 
   const changes = req.body;
   const id = req.params;
 
   Workout.update(id, changes)
-    .then(user => {
-      res.status(200).json({ message: "Updated user", user });
+    .then(workout => {
+      res.status(200).json({ message: "Updated workout", workout });
     })
     .catch(err => {
       res
@@ -45,14 +43,13 @@ router.put("/:id", checkID, (req, res) => {
     });
 });
 
-// Delete Workout and all cooresponding Information
 router.delete("/:id", checkID, (req, res) => {
 
   const id = req.params;
 
   Workout.deleteWorkout(id)
-    .then(user => {
-      user
+    .then(workout => {
+      workout
         ? res.status(200).json({ message: "Deleted Workout" })
         : res.status(404).json({ message: "Workout does not exist!" });
     })
@@ -62,11 +59,10 @@ router.delete("/:id", checkID, (req, res) => {
     });
 });
 
-// Check ID middleware
 function checkID(req, res, next) {
-  Workout.getBy({ id: req.params.id })
-    .then(user => {
-      if (user) {
+  Workout.getByID({ id: req.params.id })
+    .then(workout => {
+      if (workout) {
         next();
       } else {
         res.status(404).json({ message: "No Workout with that ID!" });

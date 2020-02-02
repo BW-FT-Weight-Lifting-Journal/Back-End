@@ -1,7 +1,7 @@
 const db = require("../data/dbConfig.js");
 
 const find = () => {          
-  return db("workouts");
+  return db("exercises");
 };
 
 const findByID = (id) => {                                          
@@ -9,12 +9,12 @@ const findByID = (id) => {
     .where(id);                                                     
 };     
 
-const insert = workout => {
-  return db("workouts").insert(workout, "id");
+const insert = exercise => {
+  return db("exercises").insert(exercise, "id");
 };
 
 const update = (id, changes) => {
-  return db("workouts")
+  return db("exercises")
     .where(id)
     .update(changes)
     .then(res => {
@@ -26,7 +26,7 @@ const update = (id, changes) => {
     });
 };
 
-const deleteWorkout = (id) => {
+const deleteExercise = (id) => {
   return getBy(id)
     .then(res => {
       if (res) {
@@ -42,5 +42,5 @@ module.exports = {
   findByID,
   insert,
   update,
-  deleteWorkout,
+  deleteExercise,
 };
