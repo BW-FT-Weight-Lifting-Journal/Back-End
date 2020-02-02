@@ -4,7 +4,7 @@ const helmet = require("helmet");
 
 const restricted = require("../auth/restrictedMiddleware.js");
 const authRouter = require("../auth/authRouter.js");
-const workoutRouter = require("../workout/workoutRouter.js");
+const workoutRouter = require("../routers/workoutRouter.js.js");
 
 const server = express();
 
@@ -13,7 +13,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use("/api/auth", authRouter);
-server.use("/api/workout", restricted, workoutRouter);
+server.use("/api/workout", workoutRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({ message: "Server up!"})
