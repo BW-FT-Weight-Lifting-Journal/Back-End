@@ -36,36 +36,70 @@ POST Login
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/workouts | N/A | N/A | Returns an object of all the workouts in the database. |
-GET | /api/workouts/:id | N/A | N/A | Returns a singular event object based on user_id. |
-POST | /api/workouts | workoutName, date, user_id | N/A | Allows users to post brand new workouts to the database. |
-DELETE | /api/:id/workouts | user_id | N/A | Allows users to delete ANY OF THEIR OWN events. |
+GET | /api/users/:id/workouts/ | user_id | N/A | Returns an object of all the workouts in the database associated to a particular user. |
+GET | /api/users/:id/workouts/:id | user_id, workout_id | N/A | Returns a singular event object based on user_id. |
+POST | /api/users/:id/workouts | workoutName, date, user_id | N/A | Allows users to post a brand new workout to the their account in database. |
+DELETE | /api/users/:id/workouts/:id | user_id, workout_id | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
 ***EXAMPLES***
-GET Workouts
+GET Users Workouts
+{
 
-GET Workouts by ID
+}
+GET User Workout by ID
+{
 
-POST Workout
+}
+POST User Workout to User Account
+{
 
-DELETE Workout
+}
+DELETE User Workout from User Account
+{
 
+}
 ```
 ### Exercises
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-POST | /api/exercises | exerciseName, musclesName | completed | Allows users to post brand new exercises to specific workout routine in database. |
-DELETE | /api/exercises/:id | N/A | N/A | Allows users to delete their OWN events. |
-PUT | /api/exercises/:id | Title, Date, Time, Location | Description, Link, Image, approved | Allows users to edit their OWN events. |
+POST | /api/users/:id/workout/:id/exercises | exerciseName, musclesName, user_id, workout_id | completed | Allows users to post brand new exercises to specific workout routine in database. |
+PUT | /api/users/:id/workout/:id/exercises/:id | user_id, workout_id, exercise_id | exerciseName, musclesName, completed | Allows users to edit their OWN exercises from workout. |
+DELETE | /api/users/:id/workout/:id/exercises/:id | user_id, workout_id, exercise_id | N/A | Allows users to delete their OWN exercises from workout. |
 ```
 ***EXAMPLES***
-POST Exercise
+POST User Exercise inside User Workout
+{
 
-DELETE Exercise
+}
+PUT User Exercise inside User Workout
+{
 
-PUT Exercise
+}
+DELETE User Exercise inside User Workout
+{
 
+}
 ```
+### Sets
+Method | Endpoint | Body (required) | Body (optional) | Notes
+| ----- | ----------------- | -------------------- | --------------------- | ------------------ |
+POST | /api/users/:id/workout/:id/exercises/ | reps, weight, user_id, workout_id | N/A | Allows users to post brand new sets to specific exercise routine in database. |
+PUT | /api/users/:id/workout/:id/exercises/:id/sets/:id | user_id, workout_id, exercise_id, set_id | reps, weight | Allows users to edit their OWN sets from an exercise routine. |
+DELETE | /api/users/:id/workout/:id/exercises/:id/sets/:id | user_id, workout_id, exercise_id, set_id | N/A | Allows users to delete their OWN sets from exercise routine. |
+```
+***EXAMPLES***
+POST User Set inside User Exercise
+{
+
+}
+PUT User set inside User Exercise
+{
+
+}
+DELETE User Exercise inside User Exercise 
+{
+
+}
 
 ## Credits
 ### Project Manager
