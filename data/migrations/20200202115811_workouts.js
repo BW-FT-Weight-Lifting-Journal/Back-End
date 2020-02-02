@@ -1,4 +1,4 @@
-
+// workout tables including the join table for workout/exercises
 exports.up = function(knex) {
   return knex.schema.createTable('workouts', workout => {
 
@@ -6,17 +6,8 @@ exports.up = function(knex) {
 
     workout.string("workoutName").notNullable().index();
 
-    workout.string('date'); //Change to knex date-type for stretch.
-
-    workout.integer('user_id') // will this foreign key reference at top of table be an issue?
-       .unsigned()
-       .notNullable()
-       .references("id")
-       .inTable("users") // will this table reference be an issue?
-       .onDelete("CASCADE") // CASCADE will delete all related entries
-       .onUpdate("CASCADE");
-
   })
+
   .createTable('exercises', exercise => {
 
     exercise.increments();
@@ -76,5 +67,4 @@ exports.down = function(knex) {
   .dropTableIfExists("exercises")
   .dropTableIfExists("sets")
   .dropTableIfExists("workout-exercises");
-
 };
