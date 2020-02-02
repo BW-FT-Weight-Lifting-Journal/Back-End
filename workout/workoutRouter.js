@@ -18,13 +18,7 @@ router.get("/:id", (req, res) => {
   Workout.getBy({ id: req.params.id })
     .then(user => {
       if (user) {
-        let isWorkoutBool;
-        if (user.isWorkout == 1) {
-          isWorkoutBool = true;
-        } else {
-          isWorkoutBool = false;
-        }
-        res.status(200).json({ ...user, isWorkout: isWorkoutBool });
+        res.status(200).json({ ...user });
       } else {
         res.status(404).json({ message: "No Workout with that ID!" });
       }

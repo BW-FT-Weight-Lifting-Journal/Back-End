@@ -33,7 +33,7 @@ const update = (id, changes) => {
 };
 
 // Delete a user
-const deleteuser = id => {
+const deleteUser = id => {
   return getBy(id).then(res => {
     console.log(res);
     if (res) {
@@ -48,6 +48,6 @@ module.exports = {
   insert,
   getBy,
   update,
-  deleteuser,
+  deleteUser,
   find
 };

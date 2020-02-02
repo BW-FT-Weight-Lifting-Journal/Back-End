@@ -56,7 +56,7 @@ router.delete("/:id", checkID, (req, res) => {
 
   const id = req.params;
 
-  User.deleteuser(id)
+  User.deleteUser(id)
     .then(user => {
       user
         ? res.status(200).json({ message: "Deleted user" })
