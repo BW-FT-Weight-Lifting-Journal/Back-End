@@ -13,7 +13,7 @@ exports.up = function(knex) {
        .notNullable()
        .references("id")
        .inTable("users") // will this table reference be an issue?
-       .onDelete("RESTRICT") /// Check up on what happens when deleting whole workout.
+       .onDelete("CASCADE") // CASCADE will delete all related entries
        .onUpdate("CASCADE");
 
   })
@@ -42,7 +42,7 @@ exports.up = function(knex) {
        .notNullable()
        .references("id")
        .inTable("exercises")
-       .onDelete("RESTRICT") /// Check up on what happens when deleting whole workout.
+       .onDelete("CASCADE") /// CASCADE will delete all related entries
        .onUpdate("CASCADE");
 
   })
@@ -56,7 +56,7 @@ exports.up = function(knex) {
         .notNullable()
         .references("id")
         .inTable("workouts")
-        .onDelete("RESTRICT") /// Check up on what happens when deleting whole workout.
+        .onDelete("CASCADE") /// CASCADE will delete all related entries
         .onUpdate("CASCADE");
 
     routines.integer('exercise_id')
@@ -64,7 +64,7 @@ exports.up = function(knex) {
         .notNullable()
         .references("id")
         .inTable("exercises")
-        .onDelete("RESTRICT") /// Check up on what happens when deleting whole workout.
+        .onDelete("CASCADE") /// CASCADE will delete all related entries
         .onUpdate("CASCADE");
 
   })

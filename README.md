@@ -17,6 +17,7 @@ This database allows users to register, login, and view all of their workouts in
 ### Authentication
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
+GET | / | N/A | N/A | returns object -> { "message": "Server Up!" }
 POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. Returns id, name, JSON Web Token, and avatarURL |
 POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, and the user object. |
 ```
@@ -24,16 +25,12 @@ POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, 
 POST Register
 {
   'id': 1,
-  'name': 'jackson',
   'token': '<really long token value here.....>,
-  'avatarURL': '
 }
 POST Login
 {
   'id': 1,
-  'name': 'jackson',
   'token': '<really long token value here.....>,
-  'avatarURL': '
 }
 ```
 ### Workouts
