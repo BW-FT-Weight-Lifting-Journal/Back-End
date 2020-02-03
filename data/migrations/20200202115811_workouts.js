@@ -1,4 +1,4 @@
-// workout tables including the join table for workout/exercises
+//                                                                        WORKOUT, EXERCISES, SETS, and WORKOUT-EXERCISES TABLE CREATION for DB
 exports.up = function(knex) {
   return knex.schema.createTable('workouts', workout => {
 
@@ -33,7 +33,7 @@ exports.up = function(knex) {
        .notNullable()
        .references("id")
        .inTable("exercises")
-       .onDelete("CASCADE") /// CASCADE will delete all related entries
+       .onDelete("CASCADE") 
        .onUpdate("CASCADE");
 
   })
@@ -47,7 +47,7 @@ exports.up = function(knex) {
         .notNullable()
         .references("id")
         .inTable("workouts")
-        .onDelete("CASCADE") /// CASCADE will delete all related entries
+        .onDelete("CASCADE") 
         .onUpdate("CASCADE");
 
     routines.integer('exercise_id')
@@ -55,7 +55,7 @@ exports.up = function(knex) {
         .notNullable()
         .references("id")
         .inTable("exercises")
-        .onDelete("CASCADE") /// CASCADE will delete all related entries
+        .onDelete("CASCADE") 
         .onUpdate("CASCADE");
 
   })

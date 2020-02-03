@@ -1,10 +1,8 @@
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('workout-exercises').del()
+  return knex('workout-exercises').truncate()                          // deletes all existing entries
     .then(function () {
-      // Inserts seed entries
-      return knex('workout-exercises').insert([
+      return knex('workout-exercises').insert([                        // inserts seed data into local development sqlite3 database
         {
           id: 1,
           workout_id: 2,

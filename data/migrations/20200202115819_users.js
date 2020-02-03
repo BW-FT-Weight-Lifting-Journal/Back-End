@@ -1,4 +1,4 @@
-// user tables including the join table for user/workouts
+//                                                                        USERS, and USER-WORKOUTS TABLE CREATION for DB
 
 exports.up = function(knex) {
   return knex.schema.createTable('users', user => {
@@ -19,23 +19,23 @@ exports.up = function(knex) {
 
     userRoutines.increments();
 
-    userRoutines.integer('user_id') // will this foreign key reference at top of table be an issue?
+    userRoutines.integer('user_id') 
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("users") // will this table reference be an issue?
-      .onDelete("CASCADE") // CASCADE will delete all related entries
+      .inTable("users") 
+      .onDelete("CASCADE") 
       .onUpdate("CASCADE");
 
-    userRoutines.integer('workout_id') // will this foreign key reference at top of table be an issue?
+    userRoutines.integer('workout_id') 
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("workouts") // will this table reference be an issue?
-      .onDelete("CASCADE") // CASCADE will delete all related entries
+      .inTable("workouts") 
+      .onDelete("CASCADE") 
       .onUpdate("CASCADE");
 
-    userRoutines.string('date'); //Change to knex date-type for stretch.
+    userRoutines.string('date');                                              //  Change to knex date-type for stretch.
 
   })
 };
