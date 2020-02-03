@@ -2,7 +2,9 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config/secret.js");
-const Workout = require("../routers/workouts/workoutModel.js");
+
+const User = require("../Routers/user/usersModel.js");
+
 // Register Validation Middleware
 const register = (req, res, next) => {
   const { email, password } = req.body;
@@ -32,7 +34,7 @@ router.post("/register", register, (req, res) => {
   const salt = bcrypt.genSaltSync(10); // salt password
   const hash = bcrypt.hashSync(creds.password, salt); // hash password and add salt
   creds.password = hash;
-  Workout.insert(creds)
+  User.insert(creds)
     .then(user => {
       res.status(201).json(user);
     })
@@ -43,7 +45,7 @@ router.post("/register", register, (req, res) => {
 
 router.post("/login", login, (req, res) => {
   let { email, password } = req.body;
-  Workout.getBy({ email })
+  User.getBy({ email })
     .first()
     .then( user => {
       if (user && bcrypt.compareSync(password, user.password)) {
