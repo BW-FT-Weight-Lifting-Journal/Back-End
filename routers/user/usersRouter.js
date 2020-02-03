@@ -2,6 +2,22 @@ const router = require('express').Router();
 const User = require('./usersModel.js');
 const restricted = require('../../auth/restrictedMiddleware.js');
 
+
+
+router.post("/:id/workouts", restricted, (req, res) => {
+  let workout = req.body;
+  // let date = req.body.date;
+  
+  User.addWorkout(workout, req.params.id)
+  .then(workout => {
+      res.status(200).json(workout)
+})
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({message: "Failed to create a workout."})
+      })
+});
+
 router.get('/:id/workouts', restricted, (req, res) => {
   let { workoutName, name } = req.body;
   User.getWorkoutsList(req.params.id)

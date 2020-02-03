@@ -1,1 +1,1 @@
-// users/id/workouts/id/exercises/:id/sets
+//api/exerises/1/sets

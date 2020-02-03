@@ -5,14 +5,7 @@ const db = require("../../data/dbConfig.js");
 const findByID = (id) => {                                          
   return db("workouts")        
   .where(id);                                                     
-};     
-
-
-
-//Adds a workout
-const insert = workout => {
-  return db("workouts").insert(workout, "id");
-};
+};    
 
 //updates a workoout
 const update = (id, changes) => {
@@ -30,19 +23,33 @@ const update = (id, changes) => {
 
   // deletes a workout
 const deleteWorkout = (id) => {
-  return getBy(id)
+  return findByID(id)
   .then(res => {
     if (res) {
-        return db(table)
+        return db("workouts")
           .where(id)
           .del();
         }
       });
     };
+//Adds an exercise to a specific workout
 
-  module.exports = {                                          
+function addExercise(exercise, workout_id) {
+  return db('exercises')
+    .insert(exercise)
+    .then(ids => {
+      return db('workout-exercises')
+        .insert({exercise_id: ids[0], workout_id})
+          .then(id => {
+              return id[0]
+          })
+    })
+}
+
+  module.exports = { 
+  addExercise,                                         
   findByID,
-  insert,
+  // insert,
   update,
   deleteWorkout
   };

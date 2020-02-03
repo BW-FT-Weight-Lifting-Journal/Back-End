@@ -5,7 +5,8 @@ module.exports = {
  getBy,
  getWorkoutsList,
  addWorkout,
-};
+};   
+
 
 //Takes user to his workouts
 
@@ -33,14 +34,14 @@ function insert(user) {
 }
 
 
-// takes workoutname, date, and userid
-function addWorkout(workoutName, date, userID) {
-  return db("workouts")
-    .insert({
-      user_id: userID,
-      date: date
-    })
-    .then(workout => {
-      return workout[0]
+function addWorkout(workout, user_id) {
+  return db('workouts')
+    .insert(workout)
+    .then(ids => {
+      return db('user-workouts')
+        .insert({workout_id: ids[0], user_id})
+          .then(id => {
+              return id[0]
+          })
     })
 }
