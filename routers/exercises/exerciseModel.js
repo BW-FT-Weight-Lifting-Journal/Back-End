@@ -1,26 +1,16 @@
 const db = require("../../data/dbConfig.js");
 
-// const find = () => {          
-//   return db("exercises");
-// };
 
-//Find by id. It will take you to exercise page, where list of sets would be displayed
-
-
-//Joins here.
+//Finds a unique exercise ID
 const findByID = (id) => {                                          
-  return db(table)        
-    .where(id);                                                     
-};     
+  return db("exercises")        
+  .where(id);                                                     
+};    
 
-//Adding an exercise
-const insert = exercise => {
-  return db("exercises").insert(exercise, "id");
-};
-
+//Updates an exercise
 const update = (id, changes) => {
   return db("exercises")
-    .where(id)
+  .where(id)
     .update(changes)
     .then(res => {
       if (res) {
@@ -29,23 +19,23 @@ const update = (id, changes) => {
         return undefined;
       };
     });
-};
+  };
+
+//Deletes an exercise
 
 const deleteExercise = (id) => {
-  return getBy(id)
-    .then(res => {
-      if (res) {
-        return db(table)
+  return findByID(id)
+  .then(res => {
+    if (res) {
+        return db("exercises")
           .where(id)
           .del();
-    }
-  });
-};
+        }
+      });
+    };
 
-module.exports = {                                            
-  find,
+  module.exports = {                                          
   findByID,
-  insert,
   update,
-  deleteExercise,
-};
+  deleteExercise
+  };
