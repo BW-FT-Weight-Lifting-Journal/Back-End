@@ -1,14 +1,19 @@
 const db = require("../../data/dbConfig.js");
 
-const find = () => {          
-  return db("exercises");
-};
+// const find = () => {          
+//   return db("exercises");
+// };
 
+//Find by id. It will take you to exercise page, where list of sets would be displayed
+
+
+//Joins here.
 const findByID = (id) => {                                          
   return db(table)        
     .where(id);                                                     
 };     
 
+//Adding an exercise
 const insert = exercise => {
   return db("exercises").insert(exercise, "id");
 };
