@@ -4,7 +4,7 @@ const helmet = require("helmet");
 
 const restricted = require("../auth/restrictedMiddleware.js");
 const authRouter = require("../auth/authRouter.js");
-const workoutRouter = require("../routers/workoutRouter.js.js");
+const workoutRouter = require("../routers/workouts/workoutRouter");
 
 const server = express();
 

@@ -6,20 +6,20 @@ exports.seed = function(knex) {
         {
           id: 1,
           user_id: 1,
-          workout_id: 2,
-          date: 'today'
+          workout_id: 3,
+          date: '2/12/2020'
         },
         {
           id: 2,
           user_id: 2,
-          workout_id: 1,
-          date: 'tomorrow'
+          workout_id: 2,
+          date: '2/13/2020'
         },
         {
           id: 3,
           user_id: 3,
-          workout_id: 3,
-          date: 'yesterday'
+          workout_id: 1,
+          date: '2/14/2020'
         },
       ]);
     });

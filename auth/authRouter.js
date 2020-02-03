@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { jwtSecret } = require("../config/secrets.js");
-const Workout = require("../Routers/workoutModel.js.js");
+const { jwtSecret } = require("../config/secret.js");
+const Workout = require("../routers/workouts/workoutModel.js");
 // Register Validation Middleware
 const register = (req, res, next) => {
   const { email, password } = req.body;
@@ -25,7 +25,8 @@ const login = (req, res, next) => {
     });
   }
 };
-// Register End Point </api/auth/register> for ADDING a Workout
+
+// Register End Point </api/auth/register> for ADDING a User
 router.post("/register", register, (req, res) => {
   const creds = req.body; // email, password, and id = creds
   const salt = bcrypt.genSaltSync(10); // salt password
@@ -39,6 +40,7 @@ router.post("/register", register, (req, res) => {
       res.status(500).json(error);
     });
 });
+
 router.post("/login", login, (req, res) => {
   let { email, password } = req.body;
   Workout.getBy({ email })

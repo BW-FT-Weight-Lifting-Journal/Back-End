@@ -6,37 +6,37 @@ exports.seed = function(knex) {
           id:1,
           reps: 3,
           weight: 15,
-          exercise_id: 3
+          exercise_id: 6
         },
         {
           id:2,
           reps: 3,
           weight: 15,
-          exercise_id: 1
+          exercise_id: 5
         },
         {
           id:3,
           reps: 3,
           weight: 15,
-          exercise_id: 2
+          exercise_id: 4
         },
         {
           id:4,
           reps: 3,
           weight: 15,
-          exercise_id: 4
+          exercise_id: 3
         },     
         {
           id:5,
           reps: 3,
           weight: 15,
-          exercise_id: 6
+          exercise_id: 2
         },
         {
           id:6,
           reps: 3,
           weight: 15,
-          exercise_id: 5
+          exercise_id: 1
         }
       ]);
     });
