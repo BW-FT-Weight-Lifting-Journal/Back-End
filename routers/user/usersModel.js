@@ -17,13 +17,11 @@ function getBy(filter) {
 
 function getWorkoutsList(id){
   return db("user-workouts as uw")
-        .join("users as u", "uw.user_id", "u.id")
-        .join("workouts as w", "uw.workout_id", "w.id")
-        .where("u.id", id)
-        .select("u.name", "w.workoutName", "uw.date");
+    .join("users as u", "uw.user_id", "u.id")
+    .join("workouts as w", "uw.workout_id", "w.id")
+    .where("u.id", id)
+    .select("u.name", "w.workoutName", "uw.date");
 }
-
-//Adding a user
 
 function insert(user) {
   return db('users')
@@ -34,11 +32,15 @@ function insert(user) {
     })
 }
 
-// function addWorkout(workout) {
-//   return db('user-workouts as uw')
-//     .join('workouts as w', 'uw.workout_id', 'w.id')
-//     .insert(workout)
-//     .then(ids => {
-//       return ids[0]
-//     })
-// }
+
+// takes workoutname, date, and userid
+function addWorkout(workoutName, date, userID) {
+  return db("workouts")
+    .insert({
+      user_id: userID,
+      date: date
+    })
+    .then(workout => {
+      return workout[0]
+    })
+}

@@ -1,10 +1,6 @@
 const router = require("express").Router();
 const Workout = require("./workoutModel.js");
-
-
 const restricted = require("../../auth/restrictedMiddleware.js");
-
-
 
 router.get("/:id", (req, res) => {
   Workout.findByID({ id: req.params.id })
@@ -19,7 +15,6 @@ router.get("/:id", (req, res) => {
       res.status(500).json({ message: "Database error", error: err });
     });
 }); 
-
 
 
 router.put("/:id", checkID, (req, res) => {

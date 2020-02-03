@@ -36,7 +36,7 @@ router.post("/register", register, (req, res) => {
   creds.password = hash;
   User.insert(creds)
     .then(user => {
-      res.status(201).json(user);
+      res.status(201).json(user); // returns a number (userID i think)
     })
     .catch(error => {
       res.status(500).json(error);

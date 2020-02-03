@@ -18,43 +18,41 @@ Users can also create, edit and delete exercises within workouts, and create edi
 ### Authentication
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | / | N/A | N/A | returns object -> { "message": "Server Up!" }
-POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. Returns id, name, JSON Web Token, and avatarURL |
-POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, and the user object. |
+POST | /api/auth/register | email, password | name, avatarUrl | Returns a number (new user's id) |
+POST | /api/auth/login |  email, password | N/A | Returns JSON Web Token |
 ```
-***EXAMPLES***
+***EXAMPLES RESPONSES***
 POST Register
-{
-  'id': 1,
-  'token': '<really long token value here.....>,
-  'name': null,
-  'avatarURL': null,
-}
+4
 POST Login
 {
-  'id': 2,
-  'token': '<really long token value here.....>,
-  'name': null,
-  'avatarURL': null,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJlbWFpbCI6ImV4YW1wbGUxQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDdzdERtL3Z4Ri9pRk5tYW1sM29EWWVLRFFhUExTT0FVR3pzRlUyR1BWYTdrQVE1VDVoQ1htIiwibmFtZSI6bnVsbCwiYXZhdGFyVVJMIjpudWxsfSwiaWF0IjoxNTgwNzYwMzIxLCJleHAiOjE1ODA4NDY3MjF9.O53rmC6aza22SvoUgaQsjrT5jBjKep4DhbjDP_xpuiw"
 }
 ```
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/workouts/ | N/A | N/A | Returns an object of all the workouts in the database associated to a particular user. |
-GET | /api/workouts/:id | N/A | N/A | Returns a singular workout object based on user_id and workout_id. |
-POST | /api/workouts | workoutName, date | N/A | Allows users to post a brand new workout to the their account in database. |
+GET | /api/workouts/:id | N/A | N/A | Returns a singular workout object based on workout_id. |
+GET | /api/users/:userID/workouts/ | N/A | N/A |Returns a user workouts array with workout obejcts inside. |
+POST | /api/users/:userID/workouts | workoutName, date | N/A | Allows users to post a brand new workout to the their account in database. |
 DELETE | /api/workouts/:id | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
-***EXAMPLES***
-GET Users Workouts
-{
-
-}
-GET User Workout by ID
-{
-
-}
+***EXAMPLE RESPONSES***
+GET User Workout by workoutID
+[
+    {
+        "id": 1,
+        "workoutName": "upper-body"
+    }
+]
+GET Users Workouts via userID
+[
+    {
+        "name": "Aragron",
+        "workoutName": "leg-day",
+        "date": "2/12/2020"
+    }
+]
 POST User Workout to User Account
 {
 
@@ -72,7 +70,7 @@ POST | /api/workouts/:id/exercises | exerciseName, musclesName | completed | All
 PUT | /api/workouts/:id/exercises/:id | N/A | exerciseName, musclesName, completed | Allows users to edit their OWN exercises from workout. |
 DELETE | /api/workout/:id/exercises/:id | N/A | N/A | Allows users to delete their OWN exercises from workout. |
 ```
-***EXAMPLES***
+***EXAMPLES RESPONSES***
 POST User Exercise inside User Workout
 {
 
@@ -94,7 +92,7 @@ POST | /api/workout/:id/exercises/:id | reps, weight | N/A | Allows users to pos
 PUT | /api/workout/:id/exercises/:id/sets/:id | N/A | reps, weight | Allows users to edit their OWN sets from an exercise routine. |
 DELETE | /api/workout/:id/exercises/:id/sets/:id | N/A | N/A | Allows users to delete their OWN sets from exercise routine. |
 ```
-***EXAMPLES***
+***EXAMPLES RESPONSES***
 POST User Set inside User Exercise
 {
 
