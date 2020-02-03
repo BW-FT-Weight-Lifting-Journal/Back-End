@@ -1,24 +1,15 @@
 const router = require("express").Router();
-const Workout = require("../workout/workoutModel.js");
+const Workout = require("./workoutModel.js");
 
-// Get Workout Information
-router.get('/', (req, res) => {
-  Workout.find()
+const restricted = require("../../auth/restrictedMiddleware.js");
+
+
+
+router.get("/:id", restricted, (req, res) => {
+  Workout.findByID({ id: req.params.id })
     .then(workout => {
-      res.status(200).json(workout)
-    })
-    .catch(error => {
-      res.status.json({
-        message: 'error connecting to the database'
-      })
-    })
-})
-
-router.get("/:id", (req, res) => {
-  Workout.getBy({ id: req.params.id })
-    .then(user => {
-      if (user) {
-        res.status(200).json({ ...user });
+      if (workout) {
+        res.status(200).json(workout);
       } else {
         res.status(404).json({ message: "No Workout with that ID!" });
       }
@@ -28,15 +19,16 @@ router.get("/:id", (req, res) => {
     });
 }); 
 
-// Update Workout Information
-router.put("/:id", checkID, (req, res) => {
+
+
+router.put("/:id", restricted, checkID, (req, res) => {
 
   const changes = req.body;
   const id = req.params;
 
   Workout.update(id, changes)
-    .then(user => {
-      res.status(200).json({ message: "Updated user", user });
+    .then(workout => {
+      res.status(200).json({ message: "Updated workout", workout });
     })
     .catch(err => {
       res
@@ -45,14 +37,13 @@ router.put("/:id", checkID, (req, res) => {
     });
 });
 
-// Delete Workout and all cooresponding Information
-router.delete("/:id", checkID, (req, res) => {
+router.delete("/:id", restricted, checkID, (req, res) => {
 
   const id = req.params;
 
   Workout.deleteWorkout(id)
-    .then(user => {
-      user
+    .then(workout => {
+      workout
         ? res.status(200).json({ message: "Deleted Workout" })
         : res.status(404).json({ message: "Workout does not exist!" });
     })
@@ -62,11 +53,24 @@ router.delete("/:id", checkID, (req, res) => {
     });
 });
 
-// Check ID middleware
+router.post("/:id/exercises", restricted, (req, res) => {
+  let exercises = req.body;
+  // let date = req.body.date;
+  
+  Workout.addExercise(exercises, req.params.id)
+  .then(workout => {
+      res.status(200).json(workout)
+})
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({message: "Failed to create an exercise."})
+      })
+});
+
 function checkID(req, res, next) {
-  Workout.getBy({ id: req.params.id })
-    .then(user => {
-      if (user) {
+  Workout.findByID({ id: req.params.id })
+    .then(workout => {
+      if (workout) {
         next();
       } else {
         res.status(404).json({ message: "No Workout with that ID!" });
