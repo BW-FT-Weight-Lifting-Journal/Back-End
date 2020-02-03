@@ -1,21 +1,16 @@
 const db = require("../../data/dbConfig.js");
 
-const find = () => {          
-  return db("sets");
-};
 
+//Finds a unique set ID
 const findByID = (id) => {                                          
-  return db(table)        
-    .where(id);                                                     
-};     
+  return db("sets")        
+  .where(id);                                                     
+};    
 
-const insert = set => {
-  return db("sets").insert(set, "id");
-};
-
+//Updates a set
 const update = (id, changes) => {
   return db("sets")
-    .where(id)
+  .where(id)
     .update(changes)
     .then(res => {
       if (res) {
@@ -24,23 +19,23 @@ const update = (id, changes) => {
         return undefined;
       };
     });
-};
+  };
+
+//Deletes a set
 
 const deleteSet = (id) => {
-  return getBy(id)
-    .then(res => {
-      if (res) {
-        return db(table)
+  return findByID(id)
+  .then(res => {
+    if (res) {
+        return db("sets")
           .where(id)
           .del();
-    }
-  });
-};
+        }
+      });
+    };
 
-module.exports = {                                            
-  find,
+  module.exports = {                                          
   findByID,
-  insert,
   update,
-  deleteSet,
-};
+  deleteSet
+  };
