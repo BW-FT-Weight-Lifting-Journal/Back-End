@@ -5,7 +5,7 @@ const User = require('./usersModel.js');
 const restricted = require('../../auth/restrictedMiddleware.js');
 
 
-router.post("/:id/workouts", restricted, (req, res) => {
+router.post("/:id/workouts",  (req, res) => {
   let workout = req.body;
   // let date = req.body.date;
   
@@ -19,7 +19,7 @@ router.post("/:id/workouts", restricted, (req, res) => {
       })
 });
 
-router.get('/:id/workouts', restricted, (req, res) => {
+router.get('/:id/workouts',  (req, res) => {
   let { workoutName, name } = req.body;
 
   User.getWorkoutsList(req.params.id)

@@ -5,7 +5,7 @@ const restricted = require("../../auth/restrictedMiddleware.js");
 
 
 
-router.get("/:id", restricted, (req, res) => {
+router.get("/:id", (req, res) => {
   Workout.findByID({ id: req.params.id })
     .then(workout => {
       if (workout) {
@@ -22,7 +22,7 @@ router.get("/:id", restricted, (req, res) => {
 
 
 
-router.put("/:id", restricted, checkID, (req, res) => {
+router.put("/:id", checkID, (req, res) => {
 
   const changes = req.body;
   const id = req.params;
@@ -39,7 +39,7 @@ router.put("/:id", restricted, checkID, (req, res) => {
     });
 });
 
-router.delete("/:id", restricted, checkID, (req, res) => {
+router.delete("/:id",  checkID, (req, res) => {
 
   const id = req.params;
 
