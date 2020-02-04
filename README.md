@@ -2,7 +2,10 @@
 
 ## Schema Flow Chart
   * https://dbdesigner.page.link/ZeVM85p1TXbQvMh89 <br>
-
+  
+## Heroku URL
+  * https://weight-lifting-journal-web25.herokuapp.com/ <br>
+  
 ## Table of Contents
 
 - **[Overview](#overview)**<br>
@@ -15,53 +18,78 @@ Users can also create, edit and delete exercises within workouts, and create edi
 
 ## API Endpoints
 
-### Authentication
+
+### Server is Up!
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | / | N/A | N/A | returns object -> { "message": "Server Up!" }
-POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. Returns id, name, JSON Web Token, and avatarURL |
-POST | /api/auth/login |  email, password | N/A | Returns name, JSON Web Token, and the user object. |
+
+### Authentication
+Method | Endpoint | Body (required) | Body (optional) | Notes
+| ----- | ----------------- | -------------------- | --------------------- | ------------------ |
+POST | /api/auth/register | email, password | name, avatarUrl | Creates a new user object in the database. Returns userID |
+POST | /api/auth/login |  email, password | N/A | Returns JSON Web Token |
 ```
 ***EXAMPLES***
 POST Register
-{
-  'id': 1,
-  'token': '<really long token value here.....>,
-  'name': null,
-  'avatarURL': null,
-}
+2
 POST Login
 {
-  'id': 2,
   'token': '<really long token value here.....>,
-  'name': null,
-  'avatarURL': null,
 }
 ```
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/workouts/ | N/A | N/A | Returns an object of all the workouts in the database associated to a particular user. |
-GET | /api/workouts/:id | N/A | N/A | Returns a singular workout object based on user_id and workout_id. |
-POST | /api/workouts | workoutName, date | N/A | Allows users to post a brand new workout to the their account in database. |
-DELETE | /api/workouts/:id | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
+GET | /api/users/:userID/workouts | N/A (though keep in mind you do need to be logged in as user to view, edit, add, or delete users workouts | N/A | Returns a singular workout object based on user_id and workout_id. |
+POST | /api/users/:userID/workouts | workoutName | N/A | Workout ID |
+PUT | /api/workouts/:workoutID | workoutName | N/A | Workout ID |
+DELETE | /api/workouts/:workoutID | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
 ***EXAMPLES***
-GET Users Workouts
+GET User Workouts by userID in req.body.params
+[
+    {
+        "name": "Willy L",
+        "workoutName": "leg-day",
+        "date": "Saturday"
+    },
+    {
+        "name": "Willy L",
+        "workoutName": "core",
+        "date": "Monday"
+    },
+    {
+        "name": "Willy L",
+        "workoutName": "upper-body",
+        "date": "Tuesday"
+    },
+    {
+        "name": "Willy L",
+        "workoutName": "Back day",
+        "date": null
+    },
+    {
+        "name": "Willy L",
+        "workoutName": "Back day",
+        "date": null
+    }
+]
+POST Added Workout to User Account
+13
+PUT Edited Workout previously added 
 {
-
-}
-GET User Workout by ID
-{
-
-}
-POST User Workout to User Account
-{
-
+    "message": "Updated workout",
+    "workout": [
+        {
+            "id": 13,
+            "workoutName": "testEditName"
+        }
+    ]
 }
 DELETE User Workout from User Account
 {
-
+    "message": "Deleted Workout"
 }
 ```
 ### Exercises
