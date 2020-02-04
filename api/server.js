@@ -4,8 +4,8 @@ const helmet = require("helmet");
 
 const authRouter = require("../auth/authRouter.js");
 const workoutRouter = require("../routers/workouts/workoutRouter.js");
-const userRouter = require('../Routers/user/usersRouter.js');
-const exercisesRouter = require('../Routers/exercises/exerciseRouter.js');
+const userRouter = require('../routers/user/usersRouter.js');
+const exercisesRouter = require('../routers/exercises/exerciseRouter.js');
 
 
 const server = express();

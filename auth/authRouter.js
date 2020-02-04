@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config/secret.js");
 
-const User = require("../Routers/user/usersModel.js");
+const User = require("../routers/user/usersModel.js");
 
 // Register Validation Middleware
 const register = (req, res, next) => {
