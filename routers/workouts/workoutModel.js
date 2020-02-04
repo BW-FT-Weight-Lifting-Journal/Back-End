@@ -11,7 +11,7 @@ const findByID = (id) => {
 const update = (id, changes) => {
   return db("workouts")
   .where(id)
-    .update(changes)
+    .update(changes, "id")
     .then(res => {
       if (res) {
         return findByID(id);
@@ -36,10 +36,10 @@ const deleteWorkout = (id) => {
 
 function addExercise(exercise, workout_id) {
   return db('exercises')
-    .insert(exercise)
+    .insert(exercise, "id")
     .then(ids => {
       return db('workout-exercises')
-        .insert({exercise_id: ids[0], workout_id})
+        .insert({exercise_id: ids[0], workout_id}, "id")
           .then(id => {
               return id[0]
           })

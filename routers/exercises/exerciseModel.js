@@ -11,7 +11,7 @@ const findByID = (id) => {
 const update = (id, changes) => {
   return db("exercises")
   .where(id)
-    .update(changes)
+    .update(changes, "id")
     .then(res => {
       if (res) {
         return findByID(id);

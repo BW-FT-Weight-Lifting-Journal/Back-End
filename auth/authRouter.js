@@ -27,20 +27,24 @@ const login = (req, res, next) => {
     });
   }
 };
+
 // Register End Point </api/auth/register> for ADDING a Workout
 router.post("/register", register, (req, res) => {
   const creds = req.body; // email, password, and id = creds
   const salt = bcrypt.genSaltSync(10); // salt password
   const hash = bcrypt.hashSync(creds.password, salt); // hash password and add salt
   creds.password = hash;
+  console.log(req.body)
   User.insert(creds)
     .then(user => {
       res.status(201).json(user);
     })
     .catch(error => {
-      res.status(500).json(error);
+      console.log(error)
+      res.status(500).json({message: "Register is not working on the server for some reason"});
     });
 });
+
 router.post("/login", login, (req, res) => {
   let { email, password } = req.body;
   User.getBy({ email })

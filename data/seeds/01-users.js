@@ -1,9 +1,9 @@
-const bcrypt = require("bcryptjs");                                           // import bcryptjs api to hash and salt passwords for each user
+const bcrypt = require("bcryptjs");                                           
 
 exports.seed = function(knex) {
-  return knex('users').truncate()                                             // deletes all existing entries
+  return knex('users')                                          
     .then(function () {
-      return knex('users').insert([                                           // inserts seed data into local development sqlite3 database
+      return knex('users').insert([                                          
       {
         id:1,
         email: "sally1@email.com",
@@ -13,14 +13,14 @@ exports.seed = function(knex) {
       },
       {
         id:2,
-        email: "sally2@email.com",
+        email: "Willy@gmail.com",
         password: bcrypt.hashSync("user002", bcrypt.genSaltSync(10)),
         name: "Gimili",
         avatarURL: "url"
       },
       {
         id:3,
-        email: "sally3@email.com",
+        email: "Billy@gmail.com",
         password: bcrypt.hashSync("user003", bcrypt.genSaltSync(10)),
         name: "Bilbo",
         avatarURL: "url"
