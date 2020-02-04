@@ -20,7 +20,6 @@ Users can also create, edit and delete exercises within workouts, and create edi
 
 
 ### Server is Up!
-### Authentication
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | / | N/A | N/A | returns object -> { "message": "Server Up!" }
