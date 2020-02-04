@@ -41,7 +41,7 @@ POST Login
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/users/:userID/workouts | N/A | N/A | Returns a singular workout object based on user_id and workout_id. |
+GET | /api/users/:userID/workouts | N/A (though keep in mind you do need to be logged in as user to view, edit, add, or delete users workouts | N/A | Returns a singular workout object based on user_id and workout_id. |
 POST | /api/users/:userID/workouts | workoutName | N/A | Workout ID |
 PUT | /api/workouts/:workoutID | workoutName | N/A | Workout ID |
 DELETE | /api/workouts/:workoutID | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
