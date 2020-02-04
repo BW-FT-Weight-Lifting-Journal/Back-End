@@ -38,7 +38,8 @@ router.post("/register", register, (req, res) => {
       res.status(201).json(user);
     })
     .catch(error => {
-      res.status(500).json(error);
+      console.log(error)
+      res.status(500).json({message: "Can't register user"});
     });
 });
 router.post("/login", login, (req, res) => {
