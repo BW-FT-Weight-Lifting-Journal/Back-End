@@ -96,25 +96,32 @@ DELETE User Workout from User Account
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | /api/workouts/:id/exercises | N/A | N/A | Returns all exercises for a users workout routine. |
-POST | /api/workouts/:id/exercises | exerciseName, musclesName | completed | Allows users to post brand new exercises to specific workout routine in database. |
-PUT | /api/workouts/:id/exercises/:id | N/A | exerciseName, musclesName, completed | Allows users to edit their OWN exercises from workout. |
-DELETE | /api/workout/:id/exercises/:id | N/A | N/A | Allows users to delete their OWN exercises from workout. |
+POST | /api/workouts/:workoutID/exercises | exerciseName, musclesName | completed | returns exercise ID |
+PUT | /api/exercises/:id | N/A | exerciseName, musclesName, completed | Returns edited object |
+DELETE | /api/exercises/:id | N/A | N/A | Returns deleted message |
 ```
 ***EXAMPLES***
+GET
 POST User Exercise inside User Workout
-{
-
-}
+5
 PUT User Exercise inside User Workout
 {
-
+    "message": "Updated exercise",
+    "workout": [
+        {
+            "id": 5,
+            "exerciseName": "testNamechange",
+            "musclesName": "testNamechange",
+            "completed": false
+        }
+    ]
 }
 DELETE User Exercise inside User Workout
 {
-
+    "message": "Deleted Exercise"
 }
 ```
-### Sets
+### Sets (still editing)
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | /api/workouts/:id/exercises/:id | N/A | N/A | Returns all sets for a user workout routine. |
