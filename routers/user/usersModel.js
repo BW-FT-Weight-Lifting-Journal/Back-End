@@ -28,7 +28,7 @@ function getWorkoutsList(id){
 
 function insert(user) {
   return db('users')
-    .insert(user)
+    .insert(user, "id")
     .then(ids => {
       console.log(ids)
       return ids[0]
@@ -37,10 +37,10 @@ function insert(user) {
 
 function addWorkout(workout, user_id) {
   return db('workouts')
-    .insert(workout)
+    .insert(workout, "id")
     .then(ids => {
       return db('user-workouts')
-        .insert({workout_id: ids[0], user_id})
+        .insert({workout_id: ids[0], user_id}, "id")
           .then(id => {
               return id[0]
           })
