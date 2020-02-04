@@ -43,8 +43,8 @@ Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | /api/users/:userID/workouts | N/A | N/A | Returns a singular workout object based on user_id and workout_id. |
 POST | /api/users/:userID/workouts | workoutName | N/A | Workout ID |
-PUT | /api/workouts/:id | workoutName | N/A | Workout ID |
-DELETE | /api/workouts/:id | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
+PUT | /api/workouts/:workoutID | workoutName | N/A | Workout ID |
+DELETE | /api/workouts/:workoutID | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
 ***EXAMPLES***
 GET User Workouts by userID in req.body.params
