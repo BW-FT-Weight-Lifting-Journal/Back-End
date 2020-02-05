@@ -34,8 +34,30 @@ const deleteExercise = (id) => {
       });
     };
 
+  //Get Sets
+
+  function getSets(id){
+    return db("exercises as e")
+          .join("sets as s", "s.exercise_id", "e.id")
+          .where("e.id", id)
+          .select("s.id as setsId", "s.reps", "s.weight")
+  };
+
+  //Add Set
+
+  function addSets(sets) {
+    return db('sets')
+      .insert(sets, "id")
+      .then(ids => {
+        console.log(ids)
+        return ids[0]
+      })
+  }
+
   module.exports = {                                          
   findByID,
   update,
-  deleteExercise
+  deleteExercise,
+  getSets,
+  addSets
   };

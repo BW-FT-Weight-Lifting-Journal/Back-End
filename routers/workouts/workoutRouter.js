@@ -59,13 +59,37 @@ router.post("/:id/exercises", (req, res) => {
   
   Workout.addExercise(exercises, req.params.id)
   .then(workout => {
+    if(exercises.exerciseName)
       res.status(200).json(workout)
+   
 })
       .catch(err => {
         console.log(err)
         res.status(500).json({message: "Failed to create an exercise."})
       })
 });
+
+router.get('/:id/exercises',  (req, res) => {
+  let { workoutName, exerciseName } = req.body;
+
+  Workout.getExercisesList(req.params.id)
+  .then(workout => {
+    
+    if(workoutName && exerciseName === null) {
+      // console.log("this console log", req.body)
+        console.log(workout)
+        res.status(404).json({message: 'Could not find exercises for given user.'});
+      } else {
+        res.json(workout)
+
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: "Failed to get exercises!"});
+    })
+})
+
 
 function checkID(req, res, next) {
   Workout.findByID({ id: req.params.id })
