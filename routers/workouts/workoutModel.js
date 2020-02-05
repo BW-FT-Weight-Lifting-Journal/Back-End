@@ -46,10 +46,18 @@ function addExercise(exercise, workout_id) {
     })
 }
 
+function getExercisesList(id){
+  return db("workout-exercises as we")
+        .join("workouts as w", "we.workout_id", "w.id")
+        .join("exercises as e", "we.exercise_id", "e.id")
+        .where("w.id", id)
+        .select("e.id as exerciseId", "e.exerciseName", "e.musclesName", "e.completed");
+}
+
   module.exports = { 
   addExercise,                                         
   findByID,
-  // insert,
+  getExercisesList,
   update,
   deleteWorkout
   };

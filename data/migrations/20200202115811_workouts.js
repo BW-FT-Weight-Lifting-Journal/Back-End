@@ -12,7 +12,7 @@ exports.up = function(knex) {
 
     exercise.increments();
 
-    exercise.string('exerciseName').notNullable().unique();
+    exercise.string('exerciseName').notNullable();
 
     exercise.string("musclesName");
 
