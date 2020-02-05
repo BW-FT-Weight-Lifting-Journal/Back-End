@@ -1,4 +1,4 @@
-//                                                                        WORKOUT, EXERCISES, SETS, and WORKOUT-EXERCISES TABLE CREATION for DB
+
 exports.up = function(knex) {
   return knex.schema.createTable('workouts', workout => {
 

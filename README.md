@@ -41,10 +41,10 @@ POST Login
 ### Workouts
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/users/:userID/workouts | N/A (though keep in mind you do need to be logged in as user to view, edit, add, or delete users workouts | N/A | Returns a singular workout object based on user_id and workout_id. |
-POST | /api/users/:userID/workouts | workoutName | N/A | Workout ID |
-PUT | /api/workouts/:workoutID | workoutName | N/A | Workout ID |
-DELETE | /api/workouts/:workoutID | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
+GET | /api/users/:id/workouts | N/A (though keep in mind you do need to be logged in as user to view, edit, add, or delete users workouts | N/A | Returns a singular workout object based on user_id and workout_id. |
+POST | /api/users/:id/workouts | workoutName | N/A | Workout ID |
+PUT | /api/workouts/:id | workoutName | N/A | Workout ID |
+DELETE | /api/workouts/:id | N/A | N/A | Allows users to delete ANY OF THEIR OWN events. |
 ```
 ***EXAMPLES***
 GET User Workouts by userID in req.body.params
@@ -96,7 +96,7 @@ DELETE User Workout from User Account
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
 GET | /api/workouts/:id/exercises | N/A | N/A | Returns all exercises for a users workout routine. |
-POST | /api/workouts/:workoutID/exercises | exerciseName, musclesName | completed | returns exercise ID |
+POST | /api/workouts/:id/exercises | exerciseName, musclesName | completed | returns exercise ID |
 PUT | /api/exercises/:id | N/A | exerciseName, musclesName, completed | Returns edited object |
 DELETE | /api/exercises/:id | N/A | N/A | Returns deleted message |
 ```
@@ -121,13 +121,13 @@ DELETE User Exercise inside User Workout
     "message": "Deleted Exercise"
 }
 ```
-### Sets (still editing)
+### Sets
 Method | Endpoint | Body (required) | Body (optional) | Notes
 | ----- | ----------------- | -------------------- | --------------------- | ------------------ |
-GET | /api/workouts/:id/exercises/:id | N/A | N/A | Returns all sets for a user workout routine. |
-POST | /api/workout/:id/exercises/:id | reps, weight | N/A | Allows users to post brand new sets to specific exercise routine in database. |
-PUT | /api/workout/:id/exercises/:id/sets/:id | N/A | reps, weight | Allows users to edit their OWN sets from an exercise routine. |
-DELETE | /api/workout/:id/exercises/:id/sets/:id | N/A | N/A | Allows users to delete their OWN sets from exercise routine. |
+GET | /api/exercises/:id/sets | N/A | N/A | Returns all sets for a user workout routine. |
+POST | /api/exercises/:id/sets | reps, weight | N/A | Allows users to post brand new sets to specific exercise routine in database. |
+PUT | /api/sets/:id | N/A | reps, weight | Allows users to edit their OWN sets from an exercise routine. |
+DELETE | /api/sets/:id | N/A | N/A | Allows users to delete their OWN sets from exercise routine. |
 ```
 ***EXAMPLES***
 POST User Set inside User Exercise

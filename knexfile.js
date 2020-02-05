@@ -1,8 +1,8 @@
 //                                                                          
 //                                                                          
-module.exports = {                                                      //  export KNEX env config
+module.exports = {                                                    
 //                                                                          
-  development: {                                                        //  DEVELOPMENT configuration
+  development: {                                                      
     client: 'sqlite3',                                                  //  
     connection: {                                                       //  uses sqlite3 database and looks creates inside wokoutJournal.db3
       filename: './data/workoutJournal.db3'                             //  
@@ -47,11 +47,8 @@ module.exports = {                                                      //  expo
       directory: './data/migrations',                                   //  migrations same as development env config
     },                                                                  //  
     seeds: {                                                            //  
-      directory: './data/seeds',                                        //  seeds same as development env config
-    },                                                                  //  
-  },                                                                    //  
-};                                                                      //  
+      directory: './data/seeds',                                        
+    },                                                                    
+  },                                                                      
+};                                                                       
 
-//                                                                          KNEX.JS is the place to configure knex
-//                                                                          knex library is SQL query builder so you can use javascript syntax. 
-//                                                                          
