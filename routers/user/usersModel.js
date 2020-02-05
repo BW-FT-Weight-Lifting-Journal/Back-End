@@ -21,7 +21,7 @@ function getWorkoutsList(id){
         .join("users as u", "uw.user_id", "u.id")
         .join("workouts as w", "uw.workout_id", "w.id")
         .where("u.id", id)
-        .select("u.name", "w.workoutName", "uw.date");
+        .select("w.id as workoutId", "u.name", "w.workoutName", "uw.date");
 }
 
 //Adding a user
