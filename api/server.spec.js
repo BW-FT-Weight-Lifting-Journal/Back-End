@@ -2,7 +2,7 @@ const request = require('supertest');
 
 const server = require('./server.js')
 
-describe.skip("server", function() {
+describe("server", function() {
   it('runs the tests', function() {
     expect(true).toBe(true);
   })

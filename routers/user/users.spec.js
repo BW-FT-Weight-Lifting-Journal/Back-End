@@ -11,7 +11,7 @@ beforeEach(() => {
 
 
 
-describe.skip('Get Workout', () => {
+describe('Get Workout', () => {
   it('GET workouts', async () => {
     const get = await request(server).get('/api/users/3/workouts')
     // console.log(get.body)
@@ -21,7 +21,7 @@ describe.skip('Get Workout', () => {
 })
 
 
-describe.skip('Adds workout', function() {
+describe('Adds workout', function() {
   it('adds workout', async () => {
 
     const res = await request(server)

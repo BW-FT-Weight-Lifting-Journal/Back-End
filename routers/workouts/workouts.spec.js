@@ -11,18 +11,18 @@ beforeEach(() => {
 
 
 
-describe.skip('Get Workout Id', () => {
+describe('Get Workout Id', () => {
   it('GET workout id', async () => {
     const get = await request(server).get('/api/workouts/1')
     console.log(get.body)
     expect(get.status).toBe(200)
     expect(get.type).toBe('application/json')
-    // expect(get.body).toHaveProperty(["id"])
+    expect(get.body).toHaveProperty(["id"])
   })
 })
 
 
-describe.skip('Adds workout', function() {
+describe('Adds workout', function() {
   it('adds workout', async () => {
 
     const res = await request(server)
@@ -37,7 +37,7 @@ describe.skip('Adds workout', function() {
     
 })
 
-describe.skip('Get exercises', function() {
+describe('Get exercises', function() {
   it('get exercises', async () => {
     const get = await request(server)
       .get('/api/workouts/1/exercises')

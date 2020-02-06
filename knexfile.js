@@ -40,7 +40,7 @@ module.exports = {
   testing: {                                                            //  TESTING env config
     client: 'sqlite3',                                                  //  
     connection: {                                                       //  using sqlite3 database
-      filename: './data/test.db3',                                      //  
+      filename: ':memory:',                                      //  
     },                                                                  //  create database file called test.db3
     useNullAsDefault: true,                                             //  
     migrations: {                                                       //  
