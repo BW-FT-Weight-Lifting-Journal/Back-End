@@ -37,16 +37,16 @@ module.exports = {
     },                                                                  //  
   },                                                                    //  
   //                                                                        
-  testing: {                                                            //  TESTING env config
-    client: 'sqlite3',                                                  //  
-    connection: {                                                       //  using sqlite3 database
-      filename: ':memory:',                                      //  
-    },                                                                  //  create database file called test.db3
-    useNullAsDefault: true,                                             //  
-    migrations: {                                                       //  
-      directory: './data/migrations',                                   //  migrations same as development env config
-    },                                                                  //  
-    seeds: {                                                            //  
+  testing: {                                                           
+    client: 'sqlite3',                                                  
+    connection: {                                                      
+      filename: ':memory:',                                      
+    },                                                                 
+    useNullAsDefault: true,                                             
+    migrations: {                                                    
+      directory: './data/migrations',                                  
+    },                                                                  
+    seeds: {                                                             
       directory: './data/seeds',                                        
     },                                                                    
   },                                                                      
