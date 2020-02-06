@@ -30,7 +30,7 @@ function insert(user) {
   return db('users')
     .insert(user, "id")
     .then(ids => {
-      console.log(ids)
+      // console.log(ids)
       return ids[0]
     })
 }
