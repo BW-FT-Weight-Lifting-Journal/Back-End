@@ -34,7 +34,7 @@ router.post("/register", register, (req, res) => {
   const salt = bcrypt.genSaltSync(10); // salt password
   const hash = bcrypt.hashSync(creds.password, salt); // hash password and add salt
   creds.password = hash;
-  console.log(req.body)
+  // console.log(req.body)
   User.insert(creds)
     .then(user => {
       res.status(201).json(user);
