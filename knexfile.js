@@ -16,7 +16,7 @@ module.exports = {
       directory: './data/migrations',                                   //  
     },                                                                  //  
     seeds: {                                                            //  
-      directory: './data/seeds',                                        //  creates seed data in this folder
+      directory: './data/seeds',                                        
     },                                                                  //  
     useNullAsDefault: true,                                             //  
   },                                                                    //  
@@ -37,16 +37,16 @@ module.exports = {
     },                                                                  //  
   },                                                                    //  
   //                                                                        
-  testing: {                                                            //  TESTING env config
-    client: 'sqlite3',                                                  //  
-    connection: {                                                       //  using sqlite3 database
-      filename: './data/test.db3',                                      //  
-    },                                                                  //  create database file called test.db3
-    useNullAsDefault: true,                                             //  
-    migrations: {                                                       //  
-      directory: './data/migrations',                                   //  migrations same as development env config
-    },                                                                  //  
-    seeds: {                                                            //  
+  testing: {                                                           
+    client: 'sqlite3',                                                  
+    connection: {                                                      
+      filename: ':memory:',                                      
+    },                                                                 
+    useNullAsDefault: true,                                             
+    migrations: {                                                    
+      directory: './data/migrations',                                  
+    },                                                                  
+    seeds: {                                                             
       directory: './data/seeds',                                        
     },                                                                    
   },                                                                      
