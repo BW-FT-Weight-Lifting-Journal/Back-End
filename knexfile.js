@@ -16,7 +16,7 @@ module.exports = {
       directory: './data/migrations',                                   //  
     },                                                                  //  
     seeds: {                                                            //  
-      directory: './data/seeds',                                        //  creates seed data in this folder
+      directory: './data/seeds',                                        
     },                                                                  //  
     useNullAsDefault: true,                                             //  
   },                                                                    //  
