@@ -1,4 +1,4 @@
-//                                                                        USERS, and USER-WORKOUTS TABLE CREATION for DB
+
 
 exports.up = function(knex) {
   return knex.schema.createTable('users', user => {
@@ -35,7 +35,7 @@ exports.up = function(knex) {
       .onDelete("CASCADE") 
       .onUpdate("CASCADE");
 
-    userRoutines.string('date');                                              //  Change to knex date-type for stretch.
+    userRoutines.string('date');                                            
 
   })
 };

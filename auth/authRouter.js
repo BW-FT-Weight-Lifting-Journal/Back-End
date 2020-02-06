@@ -34,14 +34,14 @@ router.post("/register", register, (req, res) => {
   const salt = bcrypt.genSaltSync(10); // salt password
   const hash = bcrypt.hashSync(creds.password, salt); // hash password and add salt
   creds.password = hash;
-  console.log(req.body)
+  // console.log(req.body)
   User.insert(creds)
     .then(user => {
       res.status(201).json(user);
     })
     .catch(error => {
       console.log(error)
-      res.status(500).json({message: "Register is not working on the server for some reason"});
+      res.status(500).json({message: "Can't register new user"});
     });
 });
 
